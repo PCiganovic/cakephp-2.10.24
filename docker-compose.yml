@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    volumes:
+      - .:/var/www/html
+    ports:
+      - 8800:80
+    depends_on:
+      - cake_mysql
+
+  cake_mysql:
+    image: mysql:5.7
+#    container_name: 'cake_database'
+#    restart: 'always'
+    volumes:
+      - mysqldata:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 4t#%dfsdEFEG78D_hdjIu
+      MYSQL_DATABASE: cake_db
+      MYSQL_USER: cakeAdmin
+      MYSQL_PASSWORD: b7fe#a98rT533f9e
+
+volumes:
+  mysqldata: {}
