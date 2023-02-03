@@ -18,6 +18,8 @@ services:
 #    restart: 'always'
     volumes:
       - mysqldata:/var/lib/mysql
+    ports:
+      - 33060:3306
     environment:
       MYSQL_ROOT_PASSWORD: 4t#%dfsdEFEG78D_hdjIu
       MYSQL_DATABASE: cake_db
