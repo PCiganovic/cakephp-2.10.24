@@ -12,19 +12,83 @@ CREATE TABLE `products` (
 
 CREATE TABLE posts (
                        id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                       category_id INT NOT NULL,
                        title VARCHAR(50),
                        body TEXT,
-                       created DATETIME DEFAULT NULL,
-                       modified DATETIME DEFAULT NULL
+                       author_id INT NOT NULL ,
+                       created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                       modified_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-INSERT INTO posts (title, body, created)
-VALUES ('The title', 'This is the post body.', NOW());
-INSERT INTO posts (title, body, created)
-VALUES ('A title once again', 'And the post body follows.', NOW());
-INSERT INTO posts (title, body, created)
-VALUES ('Title strikes back', 'This is really exciting! Not.', NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number one', 1, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 1,  NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number two', 1, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 2,  NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number three', 1, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 3,  NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number four', 2, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 1,  NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number five', 3, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 2,  NOW());
+INSERT INTO posts (title, category_id, body, author_id, created_at)
+VALUES ('The title number six', 4, 'Sed efficitur libero sit amet tortor condimentum, vel aliquam nisl egestas.
+Curabitur et eleifend lectus. Nam facilisis odio sit amet aliquet ultrices. Maecenas finibus pellentesque tortor
+facilisis porta. In tellus libero, pellentesque sed convallis cursus, elementum sed velit. Vivamus nec metus eros.
+Phasellus faucibus sem risus, quis tristique tortor semper nec. Proin tristique ac nibh id commodo. Vivamus
+consectetur tortor nec ornare vestibulum.', 3,  NOW());
 
+CREATE TABLE categories (
+                         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                         name VARCHAR(50),
+                         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                         modified_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+INSERT INTO categories (name, created_at)
+VALUES ('category 1',NOW());
+INSERT INTO categories (name, created_at)
+VALUES ('category 2',NOW());
+INSERT INTO categories (name, created_at)
+VALUES ('category 3',NOW());
+INSERT INTO categories (name, created_at)
+VALUES ('category 4',NOW());
+
+CREATE TABLE authors (
+                         id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                         first_name VARCHAR(50),
+                         last_name VARCHAR(50),
+                         email VARCHAR(70),
+                         created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                         modified_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+INSERT INTO authors (first_name, last_name, email,created_at)
+    VALUES ('Pavle','Ciganovic', 'pavle@example.org',NOW());
+INSERT INTO authors (first_name, last_name, email,created_at)
+    VALUES ('Aida','Dolic', 'aida@example.org',NOW());
+INSERT INTO authors (first_name, last_name, email,created_at)
+    VALUES ('Luka','Ciganovic', 'luka@example.org',NOW());
+INSERT INTO authors (first_name, last_name, email,created_at)
+    VALUES ('Ivano','Dolic', 'ivano@example.org',NOW());
 
 /* set delimiter */
 DELIMITER $$
